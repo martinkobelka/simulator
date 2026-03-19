@@ -1,0 +1,139 @@
+{
+  "app": {
+    "title": "Simulátor"
+  },
+  "menu": {
+    "file": "Súbor",
+    "new": "Nový",
+    "open": "Otvoriť",
+    "export": "Exportovať",
+    "loadFromFile": "Načítať zo súboru",
+    "reset": "Uviesť server do východzieho stavu",
+    "resetHeader": "Reset servera",
+    "resetConfirm": "Simulácia bude zastavená a všetky jednotky obnovené do východzieho stavu. Pokračovať?",
+    "resetAccept": "Resetovať",
+    "resetReject": "Zrušiť",
+    "exit": "Ukončiť",
+    "simulation": "Simulácia",
+    "start": "Spustiť",
+    "pause": "Pozastaviť",
+    "stop": "Zastaviť",
+    "tools": "Nástroje",
+    "measureDistance": "Meranie vzdialenosti",
+    "view": "Zobrazenie",
+    "map": "Mapa",
+    "units": "Jednotky",
+    "log": "Log",
+    "help": "Nápoveda"
+  },
+  "help": {
+    "empty": "Nápoveda zatiaľ nie je k dispozícii."
+  },
+  "panels": {
+    "map": "Mapa",
+    "simControl": "Riadenie simulácie",
+    "unitInfo": "Jednotka",
+    "dataLog": "Dátový log"
+  },
+  "sim": {
+    "speed": "Rýchlosť",
+    "step": "Krok"
+  },
+  "unit": {
+    "noSelection": "Žiadna jednotka nie je vybraná. Kliknite na symbol v mape.",
+    "callsign": "Volací znak",
+    "type": "Typ",
+    "position": "Pozícia",
+    "task": "Úloha",
+    "speed": "Rýchlosť",
+    "damage": "Poškodenie",
+    "ammo": "Munícia",
+    "types": {
+      "mechanizedInfantry": "Mechanizovaná pechota",
+      "armorCompany": "Tanková rota",
+      "artilleryBattery": "Delostrelecký oddiel",
+      "hostileInfantry": "Nepriateľská pechota",
+      "hostileArmorBattalion": "Nepriateľský tankový prápor",
+      "reconPlatoon": "Prieskumná čata",
+      "engineerCompany": "Ženijná rota",
+      "hostileArtilleryBattery": "Nepriateľský delostrelecký oddiel",
+      "hostileReconUnit": "Nepriateľská prieskumná jednotka"
+    },
+    "tasks": {
+      "sectorDefense": "Obrana sektoru BRAVO",
+      "moveToReserve": "Presun do zálohy",
+      "fireSuppport": "Palebná podpora",
+      "attackNorthFlank": "Útok na severné krídlo",
+      "breachDefense": "Prelom obrany",
+      "screenNorthFlank": "Krytie severného krídla",
+      "bridgeConstruction": "Výstavba mosta",
+      "counterBattery": "Protipalebná akcia",
+      "reconForward": "Prieskum dopredu"
+    }
+  },
+  "log": {
+    "empty": "Žiadne záznamy.",
+    "clear": "Vymazať log",
+    "cleared": "--- log vymazaný ---",
+    "started": "Simulácia spustená",
+    "paused": "Simulácia pozastavená",
+    "stopped": "Simulácia zastavená",
+    "step": "Krok simulácie",
+    "waypointAdded": "Bod trasy pridaný k {{callsign}}",
+    "reachedEndOfRoute": "{{callsign}} dosiahol koniec trasy",
+    "stateLoaded": "Stav simulácie načítaný zo súboru",
+    "reset": "Server uvedený do východzieho stavu",
+    "entityAdded": "Jednotka {{callsign}} pridaná",
+    "entityRemoved": "Jednotka {{callsign}} odstránená",
+    "filterPlaceholder": "Filter kategórií...",
+    "position": "{{callsign}}: {{lon}}°E, {{lat}}°N",
+    "categories": {
+      "system": "Systém",
+      "route": "Trasa",
+      "position": "Poloha"
+    }
+  },
+  "ws": {
+    "connecting": "Pripájanie k serveru...",
+    "disconnected": "Znovu pripájanie k serveru..."
+  },
+  "map": {
+    "waypointHint": "Klik na mapu = bod trasy | Klik na jednotku = zrušiť výber",
+    "deleteHeader": "Zmazať jednotku",
+    "deleteConfirm": "Skutočne chcete zmazať jednotku {{callsign}}?",
+    "deleteAccept": "Zmazať",
+    "deleteReject": "Zrušiť"
+  },
+  "addEntity": {
+    "title": "Pridať jednotku",
+    "callsign": "Volací znak",
+    "sidc": "Symbol",
+    "speed": "Rýchlosť (km/h)",
+    "type": "Typ",
+    "task": "Úloha",
+    "add": "Pridať",
+    "cancel": "Zrušiť",
+    "errors": {
+      "callsignRequired": "Volací znak je povinný.",
+      "speedRequired": "Rýchlosť je povinná."
+    },
+    "sidcOptions": {
+      "SFGPUCI----K----": "Priateľská pechota",
+      "SFGPUCA----K----": "Priateľská obrnená technika",
+      "SFGPUCF----K----": "Priateľské delostrelectvo",
+      "SHGPUCI----K----": "Nepriateľská pechota",
+      "SHGPUCA----K----": "Nepriateľská obrnená technika",
+      "SFGPUCR----K----": "Priateľský prieskum",
+      "SFGPUCE----K----": "Priateľské ženijné vojsko",
+      "SHGPUCF----K----": "Nepriateľské delostrelectvo",
+      "SHGPUCR----K----": "Nepriateľský prieskum"
+    }
+  },
+  "dialog": {
+    "measureDistance": "Meranie vzdialenosti",
+    "entity1": "Jednotka 1",
+    "entity2": "Jednotka 2",
+    "select": "Vyberte jednotku...",
+    "close": "Zavrieť"
+  }
+}

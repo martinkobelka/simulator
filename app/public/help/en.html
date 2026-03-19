@@ -1,0 +1,49 @@
+<h3>Simulation Control</h3>
+<ul>
+  <li><strong>Start</strong> – starts the simulation. Units with assigned routes will begin moving.</li>
+  <li><strong>Pause</strong> – pauses the simulation. Units remain at their current positions.</li>
+  <li><strong>Stop</strong> – stops the simulation and resets all units to their starting positions.</li>
+  <li><strong>Step</strong> – advances the simulation by one tick (250 ms). At 1× speed, a unit travelling at <em>v</em> km/h covers <em>v</em> ÷ 14,400 km per step (e.g. 45 km/h → 3.1 m, 30 km/h → 2.1 m, 10 km/h → 0.7 m).</li>
+  <li><strong>Speed</strong> – simulation speed multiplier (1× to 1000×). Default value is 10×.</li>
+</ul>
+
+<h3>Map Controls</h3>
+<ul>
+  <li><strong>Click on a unit</strong> – displays unit information in the right panel.</li>
+  <li><strong>Click on selected unit again</strong> – deselects it.</li>
+  <li><strong>Click on empty map</strong> (no unit selected) – opens the Add Unit dialog at the clicked position.</li>
+  <li><strong>Click on empty map</strong> (with a mobile unit selected) – adds a waypoint. The cursor changes to a crosshair.</li>
+  <li><strong>Delete key</strong> (with a unit selected) – permanently removes the selected unit.</li>
+</ul>
+
+<h3>Routes</h3>
+<p>Routes can only be assigned to mobile units (speed &gt; 0 km/h). Static units cannot have routes.</p>
+
+<h3>Unit Types</h3>
+<ul>
+  <li><strong>Infantry</strong> – dismounted infantry unit (X symbol).</li>
+  <li><strong>Armor</strong> – tank or armored vehicle unit (oval symbol).</li>
+  <li><strong>Artillery</strong> – field artillery battery (filled circle symbol).</li>
+  <li><strong>Reconnaissance</strong> – recon platoon or unit (magnifying glass symbol).</li>
+  <li><strong>Engineer</strong> – engineer company (E symbol).</li>
+  <li>Friendly units are displayed in <strong>blue</strong>, hostile units in <strong>red</strong>.</li>
+</ul>
+
+<h3>File</h3>
+<ul>
+  <li><strong>Export</strong> – saves the current starting positions and unit routes to a JSON file.</li>
+  <li><strong>Load from File</strong> – restores positions and routes from a previously exported JSON file. The simulation will be stopped.</li>
+</ul>
+
+<h3>Tools</h3>
+<ul>
+  <li><strong>Measure Distance</strong> – opens a dialog to calculate the distance between two units. Displays a minimap with both unit positions and the connecting line.</li>
+</ul>
+
+<h3>Data Log</h3>
+<p>The Data Log panel shows simulation events. Use the toggle buttons in the header to filter categories:</p>
+<ul>
+  <li><strong>System</strong> – simulation start, pause, stop, unit added/removed events.</li>
+  <li><strong>Route</strong> – waypoint added, end of route reached.</li>
+  <li><strong>Position</strong> – current coordinates of moving units (once per second).</li>
+</ul>

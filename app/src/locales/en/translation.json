@@ -1,0 +1,139 @@
+{
+  "app": {
+    "title": "Simulator"
+  },
+  "menu": {
+    "file": "File",
+    "new": "New",
+    "open": "Open",
+    "export": "Export",
+    "loadFromFile": "Load from File",
+    "reset": "Reset to Default State",
+    "resetHeader": "Reset server",
+    "resetConfirm": "This will stop the simulation and restore all units to their default state. Continue?",
+    "resetAccept": "Reset",
+    "resetReject": "Cancel",
+    "exit": "Exit",
+    "simulation": "Simulation",
+    "start": "Start",
+    "pause": "Pause",
+    "stop": "Stop",
+    "tools": "Tools",
+    "measureDistance": "Measure Distance",
+    "view": "View",
+    "map": "Map",
+    "units": "Units",
+    "log": "Log",
+    "help": "Help"
+  },
+  "help": {
+    "empty": "Help is not available yet."
+  },
+  "panels": {
+    "map": "Map",
+    "simControl": "Simulation Control",
+    "unitInfo": "Unit",
+    "dataLog": "Data Log"
+  },
+  "sim": {
+    "speed": "Speed",
+    "step": "Step"
+  },
+  "unit": {
+    "noSelection": "No unit selected. Click a symbol on the map.",
+    "callsign": "Callsign",
+    "type": "Type",
+    "position": "Position",
+    "task": "Task",
+    "speed": "Speed",
+    "damage": "Damage",
+    "ammo": "Ammo",
+    "types": {
+      "mechanizedInfantry": "Mechanized Infantry",
+      "armorCompany": "Armor Company",
+      "artilleryBattery": "Artillery Battery",
+      "hostileInfantry": "Hostile Infantry",
+      "hostileArmorBattalion": "Hostile Armor Battalion",
+      "reconPlatoon": "Reconnaissance Platoon",
+      "engineerCompany": "Engineer Company",
+      "hostileArtilleryBattery": "Hostile Artillery Battery",
+      "hostileReconUnit": "Hostile Reconnaissance Unit"
+    },
+    "tasks": {
+      "sectorDefense": "Sector BRAVO Defense",
+      "moveToReserve": "Move to Reserve",
+      "fireSuppport": "Fire Support",
+      "attackNorthFlank": "Attack North Flank",
+      "breachDefense": "Breach Defense Line",
+      "screenNorthFlank": "Screen North Flank",
+      "bridgeConstruction": "Bridge Construction",
+      "counterBattery": "Counter-Battery Fire",
+      "reconForward": "Forward Reconnaissance"
+    }
+  },
+  "log": {
+    "empty": "No entries.",
+    "clear": "Clear log",
+    "cleared": "--- log cleared ---",
+    "started": "Simulation started",
+    "paused": "Simulation paused",
+    "stopped": "Simulation stopped",
+    "step": "Simulation step",
+    "waypointAdded": "Waypoint added to {{callsign}}",
+    "reachedEndOfRoute": "{{callsign}} reached end of route",
+    "stateLoaded": "Simulation state loaded from file",
+    "reset": "Server reset to default state",
+    "entityAdded": "Unit {{callsign}} added",
+    "entityRemoved": "Unit {{callsign}} removed",
+    "filterPlaceholder": "Filter categories...",
+    "position": "{{callsign}}: {{lon}}°E, {{lat}}°N",
+    "categories": {
+      "system": "System",
+      "route": "Route",
+      "position": "Position"
+    }
+  },
+  "ws": {
+    "connecting": "Connecting to server...",
+    "disconnected": "Reconnecting to server..."
+  },
+  "map": {
+    "waypointHint": "Click map = add waypoint | Click unit = deselect",
+    "deleteHeader": "Delete unit",
+    "deleteConfirm": "Do you really want to delete unit {{callsign}}?",
+    "deleteAccept": "Delete",
+    "deleteReject": "Cancel"
+  },
+  "addEntity": {
+    "title": "Add Unit",
+    "callsign": "Callsign",
+    "sidc": "Symbol",
+    "speed": "Speed (km/h)",
+    "type": "Type",
+    "task": "Task",
+    "add": "Add",
+    "cancel": "Cancel",
+    "errors": {
+      "callsignRequired": "Callsign is required.",
+      "speedRequired": "Speed is required."
+    },
+    "sidcOptions": {
+      "SFGPUCI----K----": "Friendly Infantry",
+      "SFGPUCA----K----": "Friendly Armor",
+      "SFGPUCF----K----": "Friendly Artillery",
+      "SHGPUCI----K----": "Hostile Infantry",
+      "SHGPUCA----K----": "Hostile Armor",
+      "SFGPUCR----K----": "Friendly Recon",
+      "SFGPUCE----K----": "Friendly Engineer",
+      "SHGPUCF----K----": "Hostile Artillery",
+      "SHGPUCR----K----": "Hostile Recon"
+    }
+  },
+  "dialog": {
+    "measureDistance": "Measure Distance",
+    "entity1": "Unit 1",
+    "entity2": "Unit 2",
+    "select": "Select unit...",
+    "close": "Close"
+  }
+}

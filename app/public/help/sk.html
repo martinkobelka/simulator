@@ -1,0 +1,49 @@
+<h3>Ovládanie simulácie</h3>
+<ul>
+  <li><strong>Spustiť</strong> – spustí simuláciu. Jednotky s nastavenou trasou sa začnú pohybovať.</li>
+  <li><strong>Pozastaviť</strong> – pozastaví simuláciu. Jednotky zostanú na aktuálnych pozíciách.</li>
+  <li><strong>Zastaviť</strong> – zastaví simuláciu a vráti všetky jednotky na východzie pozície.</li>
+  <li><strong>Krok</strong> – vykoná jeden simulačný krok (250 ms). Pri rýchlosti 1× prejde jednotka <em>v</em> km/h vzdialenosť <em>v</em> ÷ 14 400 km (napr. 45 km/h → 3,1 m, 30 km/h → 2,1 m, 10 km/h → 0,7 m).</li>
+  <li><strong>Rýchlosť</strong> – násobič rýchlosti simulácie (1× až 1000×). Predvolená hodnota je 10×.</li>
+</ul>
+
+<h3>Práca s mapou</h3>
+<ul>
+  <li><strong>Klik na jednotku</strong> – zobrazí informácie o jednotke v paneli vpravo.</li>
+  <li><strong>Opätovný klik na označenú jednotku</strong> – odznačí ju.</li>
+  <li><strong>Klik na prázdné miesto v mape</strong> (bez označenej jednotky) – otvorí dialóg na pridanie novej jednotky na danú pozíciu.</li>
+  <li><strong>Klik na prázdné miesto v mape</strong> (pri označenej pohyblivej jednotke) – pridá bod trasy. Kurzor sa zmení na zameriavač.</li>
+  <li><strong>Kláves Delete</strong> (pri označenej jednotke) – trvalo odstráni označenú jednotku.</li>
+</ul>
+
+<h3>Trasy</h3>
+<p>Trasy možno pridávať iba pohyblivým jednotkám (rýchlosť &gt; 0 km/h). Statické jednotky trasu mať nemôžu.</p>
+
+<h3>Typy jednotiek</h3>
+<ul>
+  <li><strong>Pechota</strong> – pešia jednotka (symbol X).</li>
+  <li><strong>Obrnená technika</strong> – tanková alebo obrnená jednotka (symbol ovál).</li>
+  <li><strong>Delostrelectvo</strong> – delostrelecký oddiel (symbol plný kruh).</li>
+  <li><strong>Prieskum</strong> – prieskumná čata alebo jednotka (symbol lupa).</li>
+  <li><strong>Ženijné vojsko</strong> – ženijná rota (symbol E).</li>
+  <li>Priateľské jednotky sú zobrazené <strong>modro</strong>, nepriateľské <strong>červeno</strong>.</li>
+</ul>
+
+<h3>Súbor</h3>
+<ul>
+  <li><strong>Exportovať</strong> – uloží aktuálne východzie polohy a trasy jednotiek do súboru JSON.</li>
+  <li><strong>Načítať zo súboru</strong> – obnoví polohy a trasy z predtým exportovaného súboru JSON. Simulácia sa zastaví.</li>
+</ul>
+
+<h3>Nástroje</h3>
+<ul>
+  <li><strong>Meranie vzdialenosti</strong> – otvorí dialóg na výpočet vzdialenosti medzi dvoma jednotkami. Zobrazuje minimapu s polohou oboch jednotiek a dĺžkou spojnice.</li>
+</ul>
+
+<h3>Dátový log</h3>
+<p>Panel Dátový log zobrazuje udalosti simulácie. Pomocou prepínačov v záhlaví možno filtrovať kategórie:</p>
+<ul>
+  <li><strong>Systém</strong> – spustenie, pozastavenie, zastavenie simulácie, pridanie a odobranie jednotky.</li>
+  <li><strong>Trasa</strong> – pridanie bodu trasy, dosiahnutie konca trasy.</li>
+  <li><strong>Poloha</strong> – aktuálne súradnice pohybujúcich sa jednotiek (1× za sekundu).</li>
+</ul>

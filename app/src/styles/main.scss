@@ -1,0 +1,462 @@
+// ── Variables ────────────────────────────────────────────────
+$color-primary:       #2563eb;
+$color-primary-dark:  #1d4ed8;
+$color-primary-light: #eff6ff;
+$color-primary-border:#bfdbfe;
+
+$color-text:          #334155;
+$color-text-muted:    #64748b;
+$color-text-faint:    #94a3b8;
+$color-text-disabled: #adb5bd;
+
+$color-bg:            #f8fafc;
+$color-bg-panel:      #f1f5f9;
+$color-border:        #dee2e6;
+
+$color-warning:       #f59e0b;
+$color-danger:        #ef4444;
+
+$font-mono:           monospace;
+$font-sans:           -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                      sans-serif;
+
+// ── Reset ────────────────────────────────────────────────────
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+// ── Layout ───────────────────────────────────────────────────
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-body {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+// ── MenuBar ──────────────────────────────────────────────────
+.app-menubar.p-menubar {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.menubar-start {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 1.5rem;
+
+  .pi {
+    font-size: 1.25rem;
+    color: $color-primary;
+  }
+}
+
+.menubar-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #1e3a5f;
+  text-transform: uppercase;
+}
+
+// ── Panels ───────────────────────────────────────────────────
+.panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  background: $color-bg-panel;
+  border-bottom: 2px solid $color-border;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: $color-text;
+  flex-shrink: 0;
+}
+
+.panel-content {
+  flex: 1;
+  overflow: auto;
+  padding: 0.75rem;
+  min-height: 0;
+}
+
+// ── Map Panel ────────────────────────────────────────────────
+.map-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-container {
+  flex: 1;
+  min-height: 0;
+}
+
+.map-waypoint-hint {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: $color-warning;
+  font-style: italic;
+}
+
+// ── Simulation Control ───────────────────────────────────────
+.sim-clock {
+  margin-left: auto;
+  font-family: $font-mono;
+  font-size: 0.9rem;
+  color: #475569;
+  letter-spacing: 0.05em;
+}
+
+.sim-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sim-speed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.875rem;
+    color: #495057;
+  }
+}
+
+// ── Unit Info Panel ──────────────────────────────────────────
+.no-selection {
+  color: $color-text-disabled;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.unit-callsign-tag {
+  margin-left: auto;
+  font-size: 0.75rem;
+}
+
+.unit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+
+  td {
+    padding: 0.3rem 0.4rem;
+    vertical-align: middle;
+
+    &:first-child {
+      color: $color-text-muted;
+      white-space: nowrap;
+      width: 40%;
+    }
+  }
+
+  tr:nth-child(even) td {
+    background: $color-bg;
+  }
+}
+
+.unit-progress-value {
+  font-size: 0.75rem;
+}
+
+.unit-progress-bar {
+  height: 0.75rem;
+}
+
+// ── Data Log Panel ───────────────────────────────────────────
+.log-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.log-empty {
+  color: $color-text-disabled;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.log-badge {
+  margin-left: 0.5rem;
+}
+
+.log-category-toggles {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.log-cat-btn {
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+  border: 1px solid $color-border;
+  border-radius: 3px;
+  background: transparent;
+  color: $color-text-muted;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background: $color-bg-panel;
+  }
+
+  &--active {
+    background: $color-primary-light;
+    border-color: $color-primary-border;
+    color: $color-primary-dark;
+    font-weight: 600;
+  }
+}
+
+.log-clear-btn {
+  margin-left: 0.25rem;
+  padding: 0.1rem 0.3rem !important;
+}
+
+.log-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid $color-bg-panel;
+}
+
+.log-time {
+  color: $color-text-faint;
+  font-family: $font-mono;
+  flex-shrink: 0;
+}
+
+.log-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.log-msg {
+  color: $color-text;
+}
+
+// ── Distance Measure Dialog ──────────────────────────────────
+.measure-dialog-root.p-dialog {
+  width: 520px;
+}
+
+.measure-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.measure-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  .p-dropdown {
+    width: 100%;
+  }
+}
+
+.measure-minimap {
+  width: 100%;
+  height: 260px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid $color-border;
+}
+
+.measure-result {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: $color-primary-light;
+  border: 1px solid $color-primary-border;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $color-primary-dark;
+}
+
+
+// ── Help Dialog ──────────────────────────────────────────────
+.help-dialog.p-dialog {
+  width: 640px;
+}
+
+.help-content {
+  font-size: 0.9rem;
+  color: $color-text;
+  line-height: 1.6;
+  max-height: 70vh;
+  overflow-y: auto;
+
+  h2 { font-size: 1.1rem; margin: 0 0 1rem; color: #1e3a5f; }
+  h3 { font-size: 0.95rem; margin: 1.2rem 0 0.4rem; color: $color-primary-dark; }
+  ul { margin: 0.25rem 0 0.5rem 1.2rem; padding: 0; }
+  li { margin-bottom: 0.3rem; }
+  p  { margin: 0.25rem 0 0.5rem; }
+  strong { color: $color-text; }
+}
+
+// ── Loading Screen ───────────────────────────────────────────
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  font-size: 2.5rem;
+  color: $color-primary;
+}
+
+.loading-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1e3a5f;
+}
+
+.loading-status {
+  color: $color-text-muted;
+  font-size: 0.9rem;
+}
+
+// ── react-grid-layout ─────────────────────────────────────────
+.grid-panel {
+  background: #ffffff;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .panel {
+    height: 100%;
+  }
+
+  .panel-header {
+    cursor: grab;
+  }
+
+}
+
+// resize handle visibility
+.react-resizable-handle {
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// ── Add Entity Dialog ──────────────────────────────────────────
+.add-entity-dialog {
+  width: 360px;
+
+  .add-entity-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .add-entity-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .p-inputtext,
+    .p-dropdown,
+    .p-inputnumber {
+      width: 100%;
+    }
+
+    .p-inputnumber {
+      display: flex;
+
+      .p-inputnumber-input {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+  }
+
+  .add-entity-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+}
+
+// ── SIDC symbol option ─────────────────────────────────────────
+.sidc-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidc-option-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
