@@ -2,6 +2,8 @@
 
 A military unit simulation tool with a React frontend and a Node.js WebSocket server.
 
+**Live demo:** https://simulator.martinkobelka.cz
+
 ## Project Structure
 
 ```
