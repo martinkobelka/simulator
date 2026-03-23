@@ -4,6 +4,8 @@ A military unit simulation tool with a React frontend and a Node.js WebSocket se
 
 **Live demo:** https://simulator.martinkobelka.cz
 
+<img src="screenshot.png" width="600" alt="Screenshot" />
+
 ## Project Structure
 
 ```
