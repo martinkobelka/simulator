@@ -3,11 +3,13 @@ const SimulationEngine = require('./SimulationEngine');
 const { broadcast } = require('./broadcast');
 const logger = require('./logger');
 
-const { PORT: DEFAULT_PORT } = require('./constants');
+// Port can be overridden via --port / -p CLI argument
+const { DEFAULT_PORT } = require('./constants');
 const argv = require('minimist')(process.argv.slice(2), { alias: { p: 'port' }, default: { port: DEFAULT_PORT } });
 const PORT = argv.port;
 const wss = new WebSocketServer({ port: PORT });
 
+// Engine callback broadcasts every simulation event to all connected clients
 const engine = new SimulationEngine((event) => {
   const clientCount = wss.clients.size;
   logger.broadcast(event.type, `→ ${clientCount} client(s)` + (event.id ? ` | id=${event.id}` : ''));
@@ -18,6 +20,7 @@ wss.on('connection', (ws, req) => {
   const ip = req.socket.remoteAddress;
   logger.connect(`ip=${ip} | total=${wss.clients.size}`);
 
+  // Send the full current simulation state so the new client is immediately in sync
   const snapshot = engine.getSnapshot();
   ws.send(JSON.stringify({ type: 'INIT', ...snapshot }));
   logger.send('INIT', `entities=${snapshot.entities.length} | simState=${snapshot.simState}`);

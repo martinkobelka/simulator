@@ -2,6 +2,11 @@ const {ENTITIES} = require('./entities');
 const logger = require('./logger');
 const {TICK_MS, KM_PER_DEG, DEFAULT_SPEED_MULT} = require('./constants');
 
+/**
+ * Runs the simulation loop and maintains entity state.
+ * Communicates with the outside world exclusively via the onEvent callback —
+ * callers subscribe to events rather than polling internal state.
+ */
 class SimulationEngine {
     constructor(onEvent) {
         this.onEvent = onEvent;
@@ -47,7 +52,9 @@ class SimulationEngine {
     }
 
     _play() {
-        if (this.simState === 'running') return;
+        if (this.simState === 'running') {
+            return;
+        }
         this.simState = 'running';
         this.intervalId = setInterval(() => this._tick(), TICK_MS);
         this._emitSimState();
@@ -56,7 +63,9 @@ class SimulationEngine {
     }
 
     _pause() {
-        if (this.simState !== 'running') return;
+        if (this.simState !== 'running') {
+            return;
+        }
         clearInterval(this.intervalId);
         this.intervalId = null;
         this.simState = 'paused';
@@ -66,7 +75,9 @@ class SimulationEngine {
     }
 
     _stop() {
-        if (this.simState === 'stopped') return;
+        if (this.simState === 'stopped') {
+            return;
+        }
         clearInterval(this.intervalId);
         this.intervalId = null;
         this.simState = 'stopped';
@@ -82,8 +93,12 @@ class SimulationEngine {
     }
 
     _step() {
-        if (this.simState === 'running') return;
-        if (this.simState === 'stopped') this.simState = 'paused';
+        if (this.simState === 'running') {
+            return;
+        }
+        if (this.simState === 'stopped') {
+            this.simState = 'paused';
+        }
         this._tick();
         this._emitSimState();
         this._emitLog('log.step', 'info', {}, 'system');
@@ -98,22 +113,33 @@ class SimulationEngine {
 
         let anyMoved = false;
         for (const entity of this.entities) {
+            // Skip entities that are stationary, destroyed, or have no remaining route
             if (entity.speed > 0 && entity.damage < 100 && entity.route.length >= 2 && entity._routeIndex < entity.route.length - 1) {
                 this._moveEntity(entity, dt);
                 anyMoved = true;
             }
         }
 
+        // If nothing moved, still push a time update so the UI clock advances
         if (!anyMoved) {
             this.onEvent({type: 'SIM_TIME', simTime: this.simTime});
         }
     }
 
+    /**
+     * Advances an entity along its route by the distance it can cover in dt seconds.
+     * Uses a while loop to handle the case where one tick crosses multiple waypoints.
+     */
     _moveEntity(entity, dt) {
-        if (entity._routeIndex === undefined) entity._routeIndex = 0;
-        if (entity._segProgress === undefined) entity._segProgress = 0;
+        if (entity._routeIndex === undefined) {
+            entity._routeIndex = 0;
+        }
+        if (entity._segProgress === undefined) {
+            entity._segProgress = 0;
+        }
 
         const route = entity.route;
+        // Distance the entity can travel this tick, in km
         let remaining = (entity.speed / 3600) * dt * this.speedMult;
 
         while (remaining > 0 && entity._routeIndex < route.length - 1) {
@@ -122,6 +148,7 @@ class SimulationEngine {
 
             const dLon = to[0] - from[0];
             const dLat = to[1] - from[1];
+            // Correct for longitude degree length shrinking towards the poles
             const cosLat = Math.cos((from[1] * Math.PI) / 180);
             const segLenKm = Math.sqrt(
                 (dLon * KM_PER_DEG * cosLat) ** 2 +
@@ -136,11 +163,13 @@ class SimulationEngine {
             const segRemaining = segLenKm * (1 - entity._segProgress);
 
             if (remaining < segRemaining) {
+                // Still within this segment — interpolate position
                 entity._segProgress += remaining / segLenKm;
                 const t = entity._segProgress;
                 entity.position = [from[0] + dLon * t, from[1] + dLat * t];
                 remaining = 0;
             } else {
+                // Reached the next waypoint; carry over the leftover distance
                 remaining -= segRemaining;
                 entity._routeIndex++;
                 entity._segProgress = 0;
@@ -184,8 +213,12 @@ class SimulationEngine {
         // Apply loaded positions and routes
         for (const loaded of entityData) {
             const entity = this.entities.find(e => e.id === loaded.id);
-            if (!entity) continue;
-            if (loaded.position) entity.position = loaded.position;
+            if (!entity) {
+                continue;
+            }
+            if (loaded.position) {
+                entity.position = loaded.position;
+            }
             if (loaded.route) {
                 entity.route = loaded.route;
                 entity._routeIndex = 0;
@@ -239,7 +272,9 @@ class SimulationEngine {
 
     _removeEntity(entityId) {
         const idx = this.entities.findIndex(e => e.id === entityId);
-        if (idx === -1) return;
+        if (idx === -1) {
+            return;
+        }
         const entity = this.entities[idx];
         this.entities.splice(idx, 1);
         delete this._positionLogTimers[entityId];
@@ -255,7 +290,9 @@ class SimulationEngine {
 
     _addWaypoint(entityId, position) {
         const entity = this.entities.find(e => e.id === entityId);
-        if (!entity || entity.speed === 0) return;
+        if (!entity || entity.speed === 0) {
+            return;
+        }
 
         entity.route.push(position);
 
@@ -264,6 +301,7 @@ class SimulationEngine {
         logger.engine('WAYPOINT_ADDED', `callsign=${entity.callsign} | route.length=${entity.route.length} | pos=[${position.map(v => v.toFixed(4))}]`);
     }
 
+    // Deep-clone the entity definitions so each simulation run starts from a clean template
     _cloneEntities() {
         return JSON.parse(JSON.stringify(ENTITIES)).map(e => ({
             ...e,
@@ -272,6 +310,7 @@ class SimulationEngine {
         }));
     }
 
+    // Strip internal tracking fields before sending entity state to clients
     _serializeEntities() {
         return this.entities.map(({_routeIndex, _segProgress, _lastSpeed, ...rest}) => rest);
     }
