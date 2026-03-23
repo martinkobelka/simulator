@@ -18,7 +18,7 @@ const HelpDialog: React.FC<Props> = ({ visible, onHide }) => {
     fetch(`/help/${i18n.language}.html`)
       .then((r) => r.text())
       .then(setHtml)
-      .catch(() => setHtml('<p>Nápověda není dostupná.</p>'));
+      .catch(() => setHtml(`<p>${t('help.empty')}</p>`));
   }, [visible, i18n.language]);
 
   return (
