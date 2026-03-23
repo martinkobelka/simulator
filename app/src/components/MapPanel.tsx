@@ -104,16 +104,16 @@ const MapPanel: React.FC = () => {
 
       if (hitEntityId) {
         if (hitEntityId === currentId) {
-          // Klik na již označenou jednotku → odznačit
+          // Click on already selected entity — deselect
           selectedEntityIdRef.current = null;
           dispatch(selectEntity(null));
         } else {
-          // Klik na jinou jednotku → označit
+          // Click on a different entity — select it
           selectedEntityIdRef.current = hitEntityId;
           dispatch(selectEntity(hitEntityId));
         }
       } else {
-        // Klik na prázdné místo
+        // Click on empty map area
         if (currentId) {
           const selectedEntity = entitiesRef.current.find((en) => en.id === currentId);
           if (selectedEntity && selectedEntity.speed > 0 && selectedEntity.damage < 100) {
