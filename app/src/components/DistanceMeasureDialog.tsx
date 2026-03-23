@@ -64,7 +64,9 @@ const DistanceMeasureDialog: React.FC<Props> = ({ visible, onHide }) => {
   const distance = e1 && e2 ? haversineKm(e1.position, e2.position) : null;
 
   const initMap = () => {
-    if (!mapRef.current || mapInstance.current) return;
+    if (!mapRef.current || mapInstance.current) {
+      return;
+    }
     mapInstance.current = new Map({
       target: mapRef.current,
       layers: [
@@ -86,7 +88,9 @@ const DistanceMeasureDialog: React.FC<Props> = ({ visible, onHide }) => {
   // Fit view with animation when selection changes
   useEffect(() => {
     const map = mapInstance.current;
-    if (!map || !e1 || !e2) return;
+    if (!map || !e1 || !e2) {
+      return;
+    }
     const p1 = fromLonLat(e1.position);
     const p2 = fromLonLat(e2.position);
     const extent = buffer(boundingExtent([p1, p2]), 30000);
@@ -97,7 +101,9 @@ const DistanceMeasureDialog: React.FC<Props> = ({ visible, onHide }) => {
   useEffect(() => {
     vectorSource.current.clear();
     const map = mapInstance.current;
-    if (!map) return;
+    if (!map) {
+      return;
+    }
 
     if (e1) {
       const f = new Feature({ geometry: new Point(fromLonLat(e1.position)) });

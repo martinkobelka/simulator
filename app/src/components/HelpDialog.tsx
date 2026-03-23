@@ -12,7 +12,9 @@ const HelpDialog: React.FC<Props> = ({ visible, onHide }) => {
   const [html, setHtml] = useState('');
 
   useEffect(() => {
-    if (!visible) return;
+    if (!visible) {
+      return;
+    }
     fetch(`/help/${i18n.language}.html`)
       .then((r) => r.text())
       .then(setHtml)

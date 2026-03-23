@@ -58,7 +58,9 @@ const AddEntityDialog: React.FC<Props> = ({ position, onHide }) => {
   }, []);
 
   useEffect(() => {
-    if (position) resetForm();
+    if (position) {
+      resetForm();
+    }
   }, [position, resetForm]);
 
   const errors = {
@@ -67,7 +69,9 @@ const AddEntityDialog: React.FC<Props> = ({ position, onHide }) => {
   };
 
   const sidcValueTemplate = (option: { label: string; value: string } | null) => {
-    if (!option) return <span>{t(`addEntity.sidcOptions.${sidc}`)}</span>;
+    if (!option) {
+      return <span>{t(`addEntity.sidcOptions.${sidc}`)}</span>;
+    }
     return (
       <div className="sidc-option">
         <img src={symbolUrl(option.value)} alt={option.label} className="sidc-option-img" />
@@ -78,7 +82,9 @@ const AddEntityDialog: React.FC<Props> = ({ position, onHide }) => {
 
   const handleAdd = () => {
     setSubmitted(true);
-    if (errors.callsign || errors.speed || !position) return;
+    if (errors.callsign || errors.speed || !position) {
+      return;
+    }
     wsService.send({
       type: 'ADD_ENTITY',
       entity: { callsign: callsign.trim(), sidc, speed: speed ?? 0, type, task, position },

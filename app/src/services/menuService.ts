@@ -24,7 +24,9 @@ export function exportEntities(entities: Entity[]): void {
 
 export function loadStateFromFile(e: React.ChangeEvent<HTMLInputElement>): void {
   const file = e.target.files?.[0];
-  if (!file) return;
+  if (!file) {
+    return;
+  }
   const reader = new FileReader();
   reader.onload = (ev) => {
     try {

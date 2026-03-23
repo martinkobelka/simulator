@@ -43,9 +43,13 @@ const MapPanel: React.FC = () => {
   // Delete key removes selected entity (with confirmation)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== 'Delete') return;
+      if (e.key !== 'Delete') {
+        return;
+      }
       const entityId = selectedEntityIdRef.current;
-      if (!entityId) return;
+      if (!entityId) {
+        return;
+      }
       const entity = entitiesRef.current.find((en) => en.id === entityId);
       confirmDialog({
         message: t('map.deleteConfirm', { callsign: entity?.callsign ?? entityId }),
@@ -67,7 +71,9 @@ const MapPanel: React.FC = () => {
 
   // Init map once
   useEffect(() => {
-    if (!mapRef.current || mapInstance.current) return;
+    if (!mapRef.current || mapInstance.current) {
+      return;
+    }
 
     const entityLayer = new VectorLayer({ source: entitySourceRef.current, zIndex: 2 });
     entityLayerRef.current = entityLayer;
@@ -142,9 +148,13 @@ const MapPanel: React.FC = () => {
   // Draw route for selected entity
   useEffect(() => {
     routeSourceRef.current.clear();
-    if (!selectedEntityId) return;
+    if (!selectedEntityId) {
+      return;
+    }
     const entity = entities.find((e) => e.id === selectedEntityId);
-    if (!entity || entity.route.length < 2) return;
+    if (!entity || entity.route.length < 2) {
+      return;
+    }
 
     routeSourceRef.current.addFeature(
       new Feature({ geometry: new LineString(entity.route.map((p) => fromLonLat(p))) })

@@ -61,7 +61,9 @@ const simulationSlice = createSlice({
       state.entities = action.payload.entities;
       state.simState = action.payload.simState;
       state.simTime = action.payload.simTime;
-      if (action.payload.speedMult !== undefined) state.speedMult = action.payload.speedMult;
+      if (action.payload.speedMult !== undefined) {
+        state.speedMult = action.payload.speedMult;
+      }
       state.logs = [];
     },
 
@@ -84,7 +86,9 @@ const simulationSlice = createSlice({
 
     applyEntityDestroyed(state, action: PayloadAction<string>) {
       state.entities = state.entities.filter(e => e.id !== action.payload);
-      if (state.selectedEntityId === action.payload) state.selectedEntityId = null;
+      if (state.selectedEntityId === action.payload) {
+        state.selectedEntityId = null;
+      }
     },
 
     applySimStateChanged(state, action: PayloadAction<{ simState: SimState; simTime: number }>) {
@@ -94,7 +98,9 @@ const simulationSlice = createSlice({
 
     applyRouteUpdated(state, action: PayloadAction<{ id: string; route: [number, number][] }>) {
       const entity = state.entities.find(e => e.id === action.payload.id);
-      if (entity) entity.route = action.payload.route;
+      if (entity) {
+        entity.route = action.payload.route;
+      }
     },
 
     selectEntity(state, action: PayloadAction<string | null>) {
