@@ -19,7 +19,7 @@ const HelpDialog: React.FC<Props> = ({ visible, onHide }) => {
       .then((r) => r.text())
       .then(setHtml)
       .catch(() => setHtml(`<p>${t('help.empty')}</p>`));
-  }, [visible, i18n.language]);
+  }, [visible, i18n.language, t]);
 
   return (
     <Dialog header={t('menu.help')} visible={visible} onHide={onHide} className="help-dialog" modal>

@@ -19,7 +19,6 @@ import { useAppSelector } from '../store/hooks';
 import { shallowEqual } from 'react-redux';
 import { haversineKm } from '../services/geoService';
 import { entityStyle } from '../services/mapStyleService';
-import { Entity } from '../store/simulationSlice';
 
 interface Props {
   visible: boolean;
