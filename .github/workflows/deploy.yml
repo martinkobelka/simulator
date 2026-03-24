@@ -76,6 +76,7 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy via rsync
+        working-directory: ${{ github.workspace }}
         run: |
           rsync -avz --delete --exclude node_modules server/ \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/html/simulator-server.martinkobelka.cz/
