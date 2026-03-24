@@ -129,6 +129,11 @@
       "SHGPUCR----K----": "Hostile Recon"
     }
   },
+  "about": {
+    "title": "About",
+    "version": "Version",
+    "builtAt": "Built"
+  },
   "dialog": {
     "measureDistance": "Measure Distance",
     "entity1": "Unit 1",

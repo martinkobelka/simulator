@@ -1,5 +1,7 @@
 # Simulator
 
+[![Deploy](https://github.com/martinkobelka/simulator/actions/workflows/deploy.yml/badge.svg)](https://github.com/martinkobelka/simulator/actions/workflows/deploy.yml)
+
 A military unit simulation tool with a React frontend and a Node.js WebSocket server.
 
 **Live demo:** https://simulator.martinkobelka.cz

@@ -8,11 +8,13 @@ import {nextLanguage} from '../constants';
 import {exportEntities, loadStateFromFile, confirmResetServer} from '../services/menuService';
 import DistanceMeasureDialog from './DistanceMeasureDialog';
 import HelpDialog from './HelpDialog';
+import AboutDialog from './AboutDialog';
 
 const AppMenuBar: React.FC = () => {
     const {t, i18n} = useTranslation();
     const [measureVisible, setMeasureVisible] = useState(false);
     const [helpVisible, setHelpVisible] = useState(false);
+    const [aboutVisible, setAboutVisible] = useState(false);
     const entities = useAppSelector((s) => s.simulation.entities);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -57,6 +59,11 @@ const AppMenuBar: React.FC = () => {
             icon: 'pi pi-question-circle',
             command: () => setHelpVisible(true),
         },
+        {
+            label: t('about.title'),
+            icon: 'pi pi-info-circle',
+            command: () => setAboutVisible(true),
+        },
     ];
 
     const start = (
@@ -81,6 +88,7 @@ const AppMenuBar: React.FC = () => {
             <Menubar model={items} start={start} end={end} className="app-menubar"/>
             <DistanceMeasureDialog visible={measureVisible} onHide={() => setMeasureVisible(false)}/>
             <HelpDialog visible={helpVisible} onHide={() => setHelpVisible(false)}/>
+            <AboutDialog visible={aboutVisible} onHide={() => setAboutVisible(false)}/>
             <input ref={fileInputRef} type="file" accept=".json" style={{display: 'none'}}
                    onChange={loadStateFromFile}/>
         </>

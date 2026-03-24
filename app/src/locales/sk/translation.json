@@ -129,6 +129,11 @@
       "SHGPUCR----K----": "Nepriateľský prieskum"
     }
   },
+  "about": {
+    "title": "O aplikácii",
+    "version": "Verzia",
+    "builtAt": "Zostavené"
+  },
   "dialog": {
     "measureDistance": "Meranie vzdialenosti",
     "entity1": "Jednotka 1",
